@@ -1,0 +1,39 @@
+---
+title: Willkommen bei HumanShield.APP
+description: Offizielle Dokumentation für HumanShield.APP – erste Schritte, Anleitungen und Referenz.
+template: splash
+hero:
+  tagline: Die offizielle Dokumentation für HumanShield.APP.
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Erste Schritte
+      link: /guides/erste-schritte/
+      icon: right-arrow
+    - text: Referenz
+      link: /reference/uebersicht/
+      icon: open-book
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Direkt loslegen
+
+<CardGrid stagger>
+	<Card title="Erste Schritte" icon="rocket">
+		Lerne in den [Anleitungen](/guides/erste-schritte/), wie du HumanShield.APP
+		einrichtest und nutzt.
+	</Card>
+	<Card title="Referenz" icon="open-book">
+		In der [Referenz](/reference/uebersicht/) findest du alle Details kompakt
+		erklärt.
+	</Card>
+	<Card title="English documentation" icon="translate">
+		This documentation is also available in [English](/en/).
+	</Card>
+	<Card title="SecureBits auf GitHub" icon="github">
+		Quellcode und Issues findest du bei
+		[securebitsorg](https://github.com/securebitsorg).
+	</Card>
+</CardGrid>
