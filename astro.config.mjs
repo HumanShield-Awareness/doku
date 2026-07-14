@@ -10,7 +10,7 @@ export default defineConfig({
 		starlight({
 			title: 'HumanShield.APP Docs',
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/securebitsorg' },
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/HumanShield-Awareness' },
 			],
 			defaultLocale: 'root',
 			locales: {
