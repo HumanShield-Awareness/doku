@@ -25,7 +25,7 @@ This recreates the affected containers with the new values. A plain `restart` do
 
 **Fix:** Behind an external TLS-terminating proxy, set Caddy to catch-all HTTP:
 
-```ini
+```ini title=".env"
 CADDY_SITE_ADDRESS=:80
 ```
 
@@ -45,7 +45,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Host: 10.0.0.1" http://<server>/   
 
 **Fix:** Set `APP_DOMAIN` to the **public domain** users actually reach the dashboard on, and set the origin explicitly:
 
-```ini
+```ini title=".env"
 APP_DOMAIN=phish.example.com
 WEBAUTHN_ORIGIN=https://phish.example.com
 ```

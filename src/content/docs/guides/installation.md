@@ -90,7 +90,7 @@ Die Routine schreibt ausschließlich in die `.env` (Rechte `600`) — es wird ni
 
 ## Wichtige `.env`-Werte (generisch)
 
-```ini
+```ini title=".env"
 # App / Domain
 APP_DOMAIN=humanshield.example.com
 CADDY_SITE_ADDRESS=humanshield.example.com   # oder ":80" hinter externem TLS-Proxy
