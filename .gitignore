@@ -24,8 +24,13 @@ Home_shield_design/
 .vscode/*
 !.vscode/extensions.json
 .idea/
+*.code-workspace
 .DS_Store
 Thumbs.db
+
+# Front Matter CMS (lokales Editor-Tooling)
+.frontmatter/
+frontmatter.json
 
 # Claude Code
 CLAUDE.MD
