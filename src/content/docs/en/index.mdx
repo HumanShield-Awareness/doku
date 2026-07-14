@@ -1,0 +1,39 @@
+---
+title: Welcome to HumanShield.APP
+description: Official documentation for HumanShield.APP – getting started, guides, and reference.
+template: splash
+hero:
+  tagline: The official documentation for HumanShield.APP.
+  image:
+    file: ../../../assets/houston.webp
+  actions:
+    - text: Getting Started
+      link: /en/guides/erste-schritte/
+      icon: right-arrow
+    - text: Reference
+      link: /en/reference/uebersicht/
+      icon: open-book
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Get going
+
+<CardGrid stagger>
+	<Card title="Getting Started" icon="rocket">
+		Learn how to set up and use HumanShield.APP in the
+		[guides](/en/guides/erste-schritte/).
+	</Card>
+	<Card title="Reference" icon="open-book">
+		The [reference](/en/reference/uebersicht/) explains all the details in
+		concise terms.
+	</Card>
+	<Card title="Deutsche Dokumentation" icon="translate">
+		Diese Dokumentation gibt es auch auf [Deutsch](/).
+	</Card>
+	<Card title="HumanShield on GitHub" icon="github">
+		Find the source code and issues at
+		[HumanShield-Awareness](https://github.com/HumanShield-Awareness).
+	</Card>
+</CardGrid>
