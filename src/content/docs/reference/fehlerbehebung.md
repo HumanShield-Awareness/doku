@@ -25,7 +25,7 @@ Das erzeugt betroffene Container mit den neuen Werten neu. Ein reiner `restart` 
 
 **Lösung:** Caddy hinter einem externen TLS-terminierenden Proxy auf Catch-all-HTTP stellen:
 
-```ini
+```ini title=".env"
 CADDY_SITE_ADDRESS=:80
 ```
 
@@ -45,7 +45,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Host: 10.0.0.1" http://<server>/   
 
 **Lösung:** `APP_DOMAIN` auf die **öffentliche Domain**, unter der Nutzer das Dashboard tatsächlich erreichen, setzen und die Origin explizit hinterlegen:
 
-```ini
+```ini title=".env"
 APP_DOMAIN=phish.example.com
 WEBAUTHN_ORIGIN=https://phish.example.com
 ```

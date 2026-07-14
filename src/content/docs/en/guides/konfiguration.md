@@ -44,7 +44,7 @@ On the same page you can also maintain **company data**: **company name, street,
 
 For the country breakdown in the dashboard, the operator stores in the `.env` the path to a **local country database in MMDB format** (`GEOIP_DB_PATH`), e.g. MaxMind GeoLite2-Country or DB-IP Country Lite. The lookup runs entirely locally — **no external service** is ever called. Without a configured file, the country statistics simply stay empty; private/internal IP addresses are never resolved.
 
-```ini
+```ini title=".env"
 GEOIP_DB_PATH=/path/to/GeoLite2-Country.mmdb
 ```
 

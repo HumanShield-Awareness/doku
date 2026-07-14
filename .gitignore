@@ -1,6 +1,7 @@
 # Build-Output
 dist/
 .astro/
+.starlight-icons/
 
 # Dependencies
 node_modules/

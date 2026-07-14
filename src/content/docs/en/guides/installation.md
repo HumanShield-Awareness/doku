@@ -90,7 +90,7 @@ The routine only writes to `.env` (mode `600`) — nothing is hard-wired in the 
 
 ## Important `.env` values (generic)
 
-```ini
+```ini title=".env"
 # App / domain
 APP_DOMAIN=humanshield.example.com
 CADDY_SITE_ADDRESS=humanshield.example.com   # or ":80" behind an external TLS proxy

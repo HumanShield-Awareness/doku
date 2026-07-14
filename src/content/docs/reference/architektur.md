@@ -20,6 +20,16 @@ sidebar:
 - `/track/*` → Backend (öffentliche Tracking-Endpunkte: Pixel, Klick, Landing, Submit)
 - alles andere → Frontend
 
+```mermaid
+flowchart LR
+    Client([Client]) --> Caddy[Caddy<br>Reverse Proxy / TLS]
+    Caddy -->|/api/*| Backend[FastAPI Backend]
+    Caddy -->|/track/*| Backend
+    Caddy -->|alles andere| Frontend[React Frontend]
+    Backend --> PG[(PostgreSQL)]
+    Backend --> Redis[(Redis)]
+```
+
 ## Wichtige Konzepte
 
 - **Singleton-Configs** in der DB: LDAP, OIDC, SMTP, Sicherheits-Policy — beim ersten Zugriff angelegt.

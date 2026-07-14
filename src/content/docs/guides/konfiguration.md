@@ -44,7 +44,7 @@ Auf derselben Seite können außerdem **Firmendaten** gepflegt werden: **Firmenn
 
 Für die Länder-Auswertung im Dashboard hinterlegt der Betreiber in der `.env` den Pfad zu einer **lokalen Country-Datenbank im MMDB-Format** (`GEOIP_DB_PATH`), z. B. MaxMind GeoLite2-Country oder DB-IP Country Lite. Der Lookup läuft vollständig lokal — es wird **nie ein externer Dienst** aufgerufen. Ohne konfigurierte Datei bleibt die Länder-Statistik einfach leer; private/interne IP-Adressen werden nie aufgelöst.
 
-```ini
+```ini title=".env"
 GEOIP_DB_PATH=/pfad/zu/GeoLite2-Country.mmdb
 ```
 
