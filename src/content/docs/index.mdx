@@ -1,39 +1,57 @@
 ---
-title: Willkommen bei HumanShield.APP
-description: Offizielle Dokumentation für HumanShield.APP – erste Schritte, Anleitungen und Referenz.
+title: HumanShield.APP Dokumentation
+description: Offizielle Dokumentation für HumanShield.APP – die selbstgehostete Open-Core-Plattform für Phishing-Awareness.
 template: splash
 hero:
-  tagline: Die offizielle Dokumentation für HumanShield.APP.
-  image:
-    file: ../../assets/houston.webp
+  title: Machen Sie Ihre Belegschaft zur menschlichen Firewall
+  tagline: HumanShield.APP ist eine selbstgehostete Open-Core-Plattform für Phishing-Awareness – simulierte Kampagnen planen, versenden und pro Empfänger auswerten.
   actions:
-    - text: Erste Schritte
-      link: /guides/erste-schritte/
-      icon: right-arrow
-    - text: Referenz
-      link: /reference/uebersicht/
+    - text: Installation starten
+      link: /guides/installation/
+      icon: rocket
+    - text: Funktionen ansehen
+      link: /reference/funktionen/
       icon: open-book
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Direkt loslegen
+## Was die Plattform kann
 
 <CardGrid stagger>
-	<Card title="Erste Schritte" icon="rocket">
-		Lerne in den [Anleitungen](/guides/erste-schritte/), wie du HumanShield.APP
-		einrichtest und nutzt.
+	<Card title="Kampagnen und Tracking" icon="email">
+		Phishing-Kampagnen mit Zeitplanung, Vorlagen (HTML/Markdown, `.eml`-Import),
+		Landing Pages und Auswertung pro Empfänger – Öffnungen, Klicks und
+		Formular-Eingaben. Details unter [Funktionen](/reference/funktionen/).
 	</Card>
-	<Card title="Referenz" icon="open-book">
-		In der [Referenz](/reference/uebersicht/) findest du alle Details kompakt
-		erklärt.
+	<Card title="Sicherheit eingebaut" icon="seti:lock">
+		Argon2id-Passwörter, at-rest verschlüsselte Secrets, 2FA mit Backup-Codes,
+		Audit-Log und gehärtete Container. Mehr unter
+		[Sicherheit](/reference/sicherheit/).
 	</Card>
-	<Card title="English documentation" icon="translate">
-		This documentation is also available in [English](/en/).
+	<Card title="Selbstgehostet und vendor-neutral" icon="setting">
+		Läuft als Docker-Compose-Stack bei jedem Betreiber; alle
+		umgebungsspezifischen Werte kommen aus der `.env` – nichts ist fest
+		verdrahtet. Los geht es mit der [Installation](/guides/installation/).
 	</Card>
-	<Card title="HumanShield auf GitHub" icon="github">
-		Quellcode und Issues findest du bei
-		[HumanShield-Awareness](https://github.com/HumanShield-Awareness).
+	<Card title="NIS2 und BSI IT-Grundschutz" icon="approve-check">
+		Messbare, wiederholbare Awareness-Maßnahmen mit Nachweisen für Audits –
+		Einordnung unter [NIS2 und BSI](/reference/nis2-und-bsi/).
 	</Card>
 </CardGrid>
+
+## Einstieg
+
+- [Installation](/guides/installation/) – Stack per Docker Compose starten
+- [Konfiguration](/guides/konfiguration/) – Login, SSO, LDAP, SMTP, 2FA
+- [Funktionen](/reference/funktionen/) – Vorlagen, Gruppen, Kampagnen, Tracking
+- [Architektur](/reference/architektur/) – technischer Aufbau
+- [Roadmap](/reference/roadmap/) – umgesetzter Stand und geplante Erweiterungen
+
+---
+
+*HumanShield.APP ist ein eigenständiges Open-Core-Projekt; der Kern steht unter
+der Mozilla Public License 2.0 (MPL-2.0). Die kommerziellen Add-ons sind davon
+getrennt und proprietär. Diese Dokumentation gibt es auch auf
+[Englisch](/en/).*
