@@ -9,6 +9,15 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'HumanShield.APP Docs',
+			favicon: '/favicon.svg',
+			head: [
+				{ tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/favicon-180.png' } },
+				{ tag: 'meta', attrs: { name: 'theme-color', content: '#F0591F' } },
+			],
+			customCss: ['./src/styles/custom.css'],
+			components: {
+				SiteTitle: './src/components/SiteTitle.astro',
+			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/HumanShield-Awareness' },
 			],

@@ -1,0 +1,123 @@
+/* HumanShield Design System -> Starlight-Theme.
+ * Quelle der Tokens: Home_shield_design/tokens/ (colors, fonts, radius).
+ * Ember-Orange ist der einzige Akzent; Dark-Mode = warmes Nahschwarz (ink-Rampe),
+ * Light-Mode = helles, luftiges UI mit weissen Karten und kuehlen Hairlines.
+ */
+
+/* Roboto + Roboto Mono, selbst gehostet (privacy-first, keine externen Requests) */
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('../fonts/roboto.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Roboto Mono';
+	font-style: normal;
+	font-weight: 100 700;
+	font-display: swap;
+	src: url('../fonts/roboto-mono.woff2') format('woff2');
+}
+
+:root {
+	--sl-font: 'Roboto';
+	--sl-font-mono: 'Roboto Mono';
+
+	/* Ember-Akzent (Dark: ember-500, Text-Akzent heller fuer Kontrast) */
+	--sl-color-accent-low: #59200c; /* ember-900 */
+	--sl-color-accent: #f0591f; /* ember-500 */
+	--sl-color-accent-high: #ffc09c; /* ember-200 */
+
+	/* Warme Ink-/Warm-Grey-Rampe (Design-Token .hs-dark) */
+	--sl-color-white: #faf7f5; /* warm-50 */
+	--sl-color-gray-1: #efe9e4; /* warm-100 */
+	--sl-color-gray-2: #d8cec7; /* warm-200 */
+	--sl-color-gray-3: #b8aea6; /* warm-300 */
+	--sl-color-gray-4: #766c64; /* warm-500 */
+	--sl-color-gray-5: #322822; /* ink-border */
+	--sl-color-gray-6: #1a1512; /* ink-850 */
+	--sl-color-black: #0c0a09; /* ink-950, Seiten-Hintergrund */
+
+	/* Design-System-Hilfstokens */
+	--hs-gradient-ember: linear-gradient(103deg, #f0591f 0%, #ff9d4d 100%);
+	--hs-glow-ember: 0 8px 24px rgba(240, 89, 31, 0.26);
+	--hs-tint-ember: rgba(240, 89, 31, 0.12);
+	--hs-text-brand: #ff7c3a; /* ember-400 auf dunklem Grund */
+}
+
+/* Light-Mode: helle, kuehle Neutrals, ember-600 als Akzent (Kontrast auf Weiss) */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #ffe0ce; /* ember-100 */
+	--sl-color-accent: #d6470f; /* ember-600 */
+	--sl-color-accent-high: #822b0b; /* ember-800 */
+
+	--sl-color-white: #17191f; /* text-primary */
+	--sl-color-gray-1: #3a3f49; /* warm-600 */
+	--sl-color-gray-2: #565c66; /* text-secondary */
+	--sl-color-gray-3: #868d98; /* text-muted */
+	--sl-color-gray-4: #b7bdc6; /* text-disabled */
+	--sl-color-gray-5: #dee0e6; /* border-strong */
+	--sl-color-gray-6: #ecedf1; /* border-subtle */
+	--sl-color-gray-7: #f5f6f8; /* bg-sunken */
+	--sl-color-black: #fbfbfc; /* bg-page */
+
+	--hs-text-brand: #d6470f; /* ember-600 */
+}
+
+/* Display-Typo: bold, leicht negativ gesperrt (Design: tracking -0.02em) */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.hero h1 {
+	letter-spacing: -0.02em;
+	font-weight: 700;
+}
+
+/* Hero: ein Gradient-Akzent auf dem Titel (ein Akzentwort pro Ansicht) */
+.hero h1 {
+	background: var(--hs-gradient-ember);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	width: fit-content;
+	margin-inline: auto;
+}
+@media (min-width: 50rem) {
+	.hero h1 {
+		margin-inline: 0;
+	}
+}
+
+/* Alle Aktionen sind Pills; Primary traegt den Ember-Gradient + Glow */
+.sl-link-button {
+	border-radius: 9999px;
+}
+.sl-link-button.primary {
+	background: var(--hs-gradient-ember);
+	border: 0;
+	color: #fff;
+	box-shadow: var(--hs-glow-ember);
+}
+.sl-link-button.primary:hover {
+	filter: brightness(1.06);
+}
+
+/* Suchfeld als Pill */
+site-search button[data-open-modal] {
+	border-radius: 9999px;
+}
+
+/* Sidebar-Aktivzustand: Ember-Tint + Inset-Balken statt Vollflaeche */
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover,
+.sidebar-content a[aria-current='page']:focus {
+	background-color: var(--hs-tint-ember);
+	color: var(--hs-text-brand);
+	box-shadow: inset 3px 0 0 var(--sl-color-accent);
+}
+
+/* Karten: weiche Radien (radius-lg 16px), Hairline-Border */
+.sl-markdown-content .card {
+	border-radius: 1rem;
+}

@@ -1,0 +1,25 @@
+---
+// Typografische Wordmark "humanshield." (Design-System Konzept K):
+// Roboto Bold, tracking -0.04em, Ember-Punkt als einziges Farbelement.
+// Als Komponente statt SVG, damit die selbst gehostete Roboto sicher greift.
+const { locale } = Astro.locals.starlightRoute;
+const href = locale ? `/${locale}/` : '/';
+---
+
+<a {href} class="hs-wordmark">humanshield<span aria-hidden="true">.</span></a>
+
+<style>
+	.hs-wordmark {
+		font-family: var(--__sl-font);
+		font-weight: 700;
+		font-size: var(--sl-text-xl);
+		letter-spacing: -0.04em;
+		line-height: 1;
+		color: var(--sl-color-white);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.hs-wordmark span {
+		color: #f0591f; /* ember-500, identisch in Light und Dark */
+	}
+</style>
