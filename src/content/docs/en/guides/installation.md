@@ -1,11 +1,11 @@
 ---
 title: "Installation"
-description: "Install, update and operate HumanShield.APP with Docker Compose."
+description: "Install, update and operate SentryMail with Docker Compose."
 sidebar:
   order: 1
 ---
 
-HumanShield.APP runs as a Docker Compose stack. All environment-specific values come from a `.env` — **no** values are hard-wired in the code.
+SentryMail runs as a Docker Compose stack. All environment-specific values come from a `.env` — **no** values are hard-wired in the code.
 
 ## Requirements
 
@@ -56,11 +56,11 @@ The interactive install routine walks you through all important settings, produc
    # Change to a directory of your choice, e.g. /opt:
    cd /opt
 
-   # Clone the repository — this creates the subfolder "HumanShield.APP":
-   git clone https://github.com/HumanShield-Awareness/HumanShield.APP.git
+   # Clone the repository — this creates the subfolder "sentrymail":
+   git clone https://github.com/securebits-cyber/sentrymail.git
 
    # Enter the new folder — all following commands run from here:
-   cd HumanShield.APP
+   cd sentrymail
    ```
 
    Notes:
@@ -92,12 +92,12 @@ The routine only writes to `.env` (mode `600`) — nothing is hard-wired in the 
 
 ```ini title=".env"
 # App / domain
-APP_DOMAIN=humanshield.example.com
-CADDY_SITE_ADDRESS=humanshield.example.com   # or ":80" behind an external TLS proxy
+APP_DOMAIN=sentrymail.example.com
+CADDY_SITE_ADDRESS=sentrymail.example.com   # or ":80" behind an external TLS proxy
 
 # Database
-POSTGRES_DB=humanshield
-POSTGRES_USER=humanshield
+POSTGRES_DB=sentrymail
+POSTGRES_USER=sentrymail
 POSTGRES_PASSWORD=change-me-strong-password
 
 # Security
@@ -113,7 +113,7 @@ SMTP_PORT=587
 SMTP_USERNAME=noreply@example.com
 SMTP_PASSWORD=change-me
 SMTP_FROM_EMAIL=noreply@example.com
-SMTP_FROM_NAME=HumanShield-Awareness
+SMTP_FROM_NAME=SentryMail
 SMTP_TLS_MODE=starttls
 ```
 
@@ -130,7 +130,7 @@ Your `.env` and data (the database volume) are preserved during an update — on
 The `update.sh` routine bundles all steps in the right order: check prerequisites → optional **DB backup** → update code via `git` (branch or pinned release tag) → rebuild/restart the stack → **health check**. It is bilingual and does not modify `.env`.
 
 ```bash
-cd /opt/HumanShield.APP   # your install directory
+cd /opt/sentrymail   # your install directory
 git pull                  # also fetches the latest update.sh itself
 ./update.sh
 ```

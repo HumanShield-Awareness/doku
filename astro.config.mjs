@@ -8,7 +8,7 @@ import starlightScrollToTop from 'starlight-scroll-to-top';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://docs.humanshield.app',
+	site: 'https://docs.sentrymail.de',
 	output: 'static',
 	integrations: [
 		// mermaid muss vor Starlight stehen (verarbeitet ```mermaid-Bloecke zuerst)
@@ -20,7 +20,7 @@ export default defineConfig({
 			codeblock: true,
 			extractSafelist: true,
 			starlight: {
-				title: 'HumanShield.APP Docs',
+				title: 'SentryMail Docs',
 				favicon: '/favicon.svg',
 				head: [
 					{ tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/favicon-180.png' } },
@@ -32,7 +32,7 @@ export default defineConfig({
 				},
 				plugins: [starlightVideos(), starlightScrollToTop()],
 				social: [
-					{ icon: 'github', label: 'GitHub', href: 'https://github.com/HumanShield-Awareness' },
+					{ icon: 'github', label: 'GitHub', href: 'https://github.com/securebits-cyber' },
 				],
 				defaultLocale: 'root',
 				locales: {

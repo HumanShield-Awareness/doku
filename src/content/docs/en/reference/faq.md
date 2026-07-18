@@ -1,11 +1,11 @@
 ---
 title: "FAQ"
-description: "Frequently asked questions about HumanShield.APP."
+description: "Frequently asked questions about SentryMail."
 sidebar:
   order: 5
 ---
 
-**What is HumanShield.APP?**
+**What is SentryMail?**
 A self-hosted open-core platform for phishing awareness: plan, send and evaluate simulated phishing campaigns per recipient.
 
 **Are real passwords or form data stored?**
