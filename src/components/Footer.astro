@@ -1,0 +1,25 @@
+---
+// Standard-Starlight-Footer (Pagination, Edit-Link, Last-Updated) plus
+// Marken-/Rechtehinweis. Text lokalisiert nach aktueller Sprache.
+import Default from '@astrojs/starlight/components/Footer.astro';
+
+const { locale } = Astro.locals.starlightRoute;
+const trademark =
+	locale === 'en'
+		? 'SentryMail is a registered trademark of SecureBits Cyber Security UG'
+		: 'SentryMail ist eine eingetragene Marke der SecureBits Cyber Security UG';
+---
+
+<Default />
+<p class="sm-trademark">{trademark}</p>
+
+<style>
+	.sm-trademark {
+		margin-top: 1.5rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--sl-color-gray-6);
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-3);
+		text-align: center;
+	}
+</style>
