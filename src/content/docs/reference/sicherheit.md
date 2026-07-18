@@ -1,11 +1,11 @@
 ---
 title: "Sicherheit"
-description: "Sicherheitsmechanismen von HumanShield.APP und Empfehlungen für den Betrieb."
+description: "Sicherheitsmechanismen von SentryMail und Empfehlungen für den Betrieb."
 sidebar:
   order: 3
 ---
 
-Überblick über die Sicherheitsmechanismen von HumanShield.APP und Empfehlungen für den Betrieb.
+Überblick über die Sicherheitsmechanismen von SentryMail und Empfehlungen für den Betrieb.
 
 ## Authentifizierung
 

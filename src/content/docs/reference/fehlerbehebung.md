@@ -21,7 +21,7 @@ Das erzeugt betroffene Container mit den neuen Werten neu. Ein reiner `restart` 
 
 **Symptom:** Das Dashboard lädt nicht; der vorgelagerte Reverse Proxy erhält von Caddy eine **308-Weiterleitung** (oft auf die Server-IP wie `https://10.x.x.x/`), teils Zertifikatsfehler in den Caddy-Logs (`could not get certificate … forbidden by policy`).
 
-**Ursache:** In der `.env` steht bei `CADDY_SITE_ADDRESS` eine (Platzhalter-)Domain wie `humanshield.example.com`. Caddy bindet dann einen host-spezifischen Site-Block an genau diese Domain und versucht, dafür ein Let's-Encrypt-Zertifikat zu holen. Ein vorgelagerter Proxy (z. B. Netbird, Cloudflare, nginx), der TLS bereits zum Client terminiert, spricht Caddy jedoch per HTTP und meist mit der **Server-IP als Host-Header** an — das passt nicht auf den Domain-Block, und Caddy leitet in eine Schleife um.
+**Ursache:** In der `.env` steht bei `CADDY_SITE_ADDRESS` eine (Platzhalter-)Domain wie `sentrymail.example.com`. Caddy bindet dann einen host-spezifischen Site-Block an genau diese Domain und versucht, dafür ein Let's-Encrypt-Zertifikat zu holen. Ein vorgelagerter Proxy (z. B. Netbird, Cloudflare, nginx), der TLS bereits zum Client terminiert, spricht Caddy jedoch per HTTP und meist mit der **Server-IP als Host-Header** an — das passt nicht auf den Domain-Block, und Caddy leitet in eine Schleife um.
 
 **Lösung:** Caddy hinter einem externen TLS-terminierenden Proxy auf Catch-all-HTTP stellen:
 
@@ -41,7 +41,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Host: 10.0.0.1" http://<server>/   
 
 **Symptom:** Die Anmeldung per Passkey funktioniert nicht (der Browser bietet den Passkey nicht an oder bricht mit einem Sicherheitsfehler ab) — insbesondere **hinter einem Reverse Proxy** oder nachdem die Zugriffs-Domain geändert wurde.
 
-**Ursache:** WebAuthn bindet Passkeys an die **RP-ID = `APP_DOMAIN`** und erwartet als Origin `https://{APP_DOMAIN}` (überschreibbar via `WEBAUTHN_ORIGIN`). Steht in der `.env` ein Platzhalter (`humanshield.example.com`), du rufst das Dashboard aber unter der echten Domain (z. B. `phish.example.com`) auf, verweigert der Browser die Passkey-Nutzung, weil RP-ID und tatsächliche Herkunft nicht zusammenpassen.
+**Ursache:** WebAuthn bindet Passkeys an die **RP-ID = `APP_DOMAIN`** und erwartet als Origin `https://{APP_DOMAIN}` (überschreibbar via `WEBAUTHN_ORIGIN`). Steht in der `.env` ein Platzhalter (`sentrymail.example.com`), du rufst das Dashboard aber unter der echten Domain (z. B. `phish.example.com`) auf, verweigert der Browser die Passkey-Nutzung, weil RP-ID und tatsächliche Herkunft nicht zusammenpassen.
 
 **Lösung:** `APP_DOMAIN` auf die **öffentliche Domain**, unter der Nutzer das Dashboard tatsächlich erreichen, setzen und die Origin explizit hinterlegen:
 

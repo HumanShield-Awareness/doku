@@ -1,11 +1,11 @@
 ---
 title: "Installation"
-description: "HumanShield.APP mit Docker Compose installieren, aktualisieren und betreiben."
+description: "SentryMail mit Docker Compose installieren, aktualisieren und betreiben."
 sidebar:
   order: 1
 ---
 
-HumanShield.APP wird als Docker-Compose-Stack betrieben. Alle umgebungs­spezifischen Werte kommen aus einer `.env` — es sind **keine** Werte im Code fest verdrahtet.
+SentryMail wird als Docker-Compose-Stack betrieben. Alle umgebungs­spezifischen Werte kommen aus einer `.env` — es sind **keine** Werte im Code fest verdrahtet.
 
 ## Voraussetzungen
 
@@ -56,11 +56,11 @@ Die interaktive Installationsroutine führt dich durch alle wichtigen Einstellun
    # In ein Verzeichnis deiner Wahl wechseln, z. B. /opt:
    cd /opt
 
-   # Repository klonen — erzeugt den Unterordner "HumanShield.APP":
-   git clone https://github.com/HumanShield-Awareness/HumanShield.APP.git
+   # Repository klonen — erzeugt den Unterordner "sentrymail":
+   git clone https://github.com/securebits-cyber/sentrymail.git
 
    # In den neuen Ordner wechseln — hier laufen alle weiteren Befehle:
-   cd HumanShield.APP
+   cd sentrymail
    ```
 
    Hinweise:
@@ -92,12 +92,12 @@ Die Routine schreibt ausschließlich in die `.env` (Rechte `600`) — es wird ni
 
 ```ini title=".env"
 # App / Domain
-APP_DOMAIN=humanshield.example.com
-CADDY_SITE_ADDRESS=humanshield.example.com   # oder ":80" hinter externem TLS-Proxy
+APP_DOMAIN=sentrymail.example.com
+CADDY_SITE_ADDRESS=sentrymail.example.com   # oder ":80" hinter externem TLS-Proxy
 
 # Datenbank
-POSTGRES_DB=humanshield
-POSTGRES_USER=humanshield
+POSTGRES_DB=sentrymail
+POSTGRES_USER=sentrymail
 POSTGRES_PASSWORD=change-me-strong-password
 
 # Sicherheit
@@ -113,7 +113,7 @@ SMTP_PORT=587
 SMTP_USERNAME=noreply@example.com
 SMTP_PASSWORD=change-me
 SMTP_FROM_EMAIL=noreply@example.com
-SMTP_FROM_NAME=HumanShield-Awareness
+SMTP_FROM_NAME=SentryMail
 SMTP_TLS_MODE=starttls
 ```
 
@@ -130,7 +130,7 @@ Die `.env` und deine Daten (Datenbank-Volume) bleiben bei einem Update erhalten 
 Die Routine `update.sh` fasst alle Schritte in der richtigen Reihenfolge zusammen: Voraussetzungen prüfen → optionales **DB-Backup** → Code per `git` aktualisieren (Branch oder fester Release-Tag) → Stack neu bauen/starten → **Health-Check**. Sie ist zweisprachig und verändert die `.env` nicht.
 
 ```bash
-cd /opt/HumanShield.APP   # dein Installationsverzeichnis
+cd /opt/sentrymail   # dein Installationsverzeichnis
 git pull                  # holt auch die neueste update.sh selbst
 ./update.sh
 ```

@@ -1,11 +1,11 @@
 ---
 title: "NIS2 and BSI"
-description: "How HumanShield.APP supports awareness requirements from NIS2 and BSI IT-Grundschutz."
+description: "How SentryMail supports awareness requirements from NIS2 and BSI IT-Grundschutz."
 sidebar:
   order: 4
 ---
 
-How HumanShield.APP supports awareness requirements from **NIS2** and the **BSI IT-Grundschutz**.
+How SentryMail supports awareness requirements from **NIS2** and the **BSI IT-Grundschutz**.
 
 > **Note:** This page is an overview, **not legal advice** and not an automatic proof of "compliance". What is binding is your internal risk analysis, your ISMS and, where applicable, legal counsel.
 
