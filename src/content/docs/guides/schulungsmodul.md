@@ -1,0 +1,88 @@
+---
+title: "Schulungsmodul (LMS)"
+description: "Selbstgehostete Pflichtschulungen mit Videos einrichten: Videospeicher, automatische Zuweisung, Verständnis-Quiz, Fristen und revisionssichere Zertifikate."
+sidebar:
+  order: 3
+---
+
+Das **Schulungsmodul (LMS – Learning Management System)** liefert die logische Folgemaßnahme zur Phishing-Simulation: Wer auffällig wird, bekommt automatisch eine **selbstgehostete Pflichtschulung mit Videos** zugewiesen — ohne Drittanbieter-CDN, mit revisionssicherem Nachweis.
+
+:::note[Enterprise-Add-on]
+Das LMS ist Teil des **Enterprise-Add-ons** und per Lizenz freigeschaltet. Ohne gültige Enterprise-Lizenz ist der Bereich gesperrt. Der Open-Core-Kern und das Business-Add-on enthalten das Modul nicht — siehe [Funktionen](/reference/funktionen/).
+:::
+
+## Was das LMS leistet
+
+- **Videobasierte Pflichtschulungen** vollständig **selbstgehostet** — die Videos liegen im eigenen Speicher, es wird kein externes CDN kontaktiert.
+- **Automatische Kurszuweisung** bei Unterschreiten eines **Awareness-Schwellwerts** (Human-Risk-Score) — riskante Personen werden ohne manuellen Aufwand eingeschult.
+- **Manipulationssicheres Fortschritts-Tracking**: Es zählt nur die **tatsächlich gesehene Wiedergabezeit**; Vorspulen erfüllt die Anforderung nicht.
+- **Verständnis-Quiz** je Kurs als Abschlusskontrolle.
+- **Fristen mit Erinnerungen und Overdue-Eskalation**.
+- **Revisionssichere Schulungs-Nachweise** als PDF mit Integritäts-Hash; sie bleiben auch **nach Ablauf der Lizenz** abrufbar.
+- **Abschluss-Reporting** mit **CSV-Export** sowie Einbindung in das Enterprise-Reporting (Schulungsfortschritt, Zertifikatsstatus) auf der Berichte-Seite.
+
+## Videospeicher konfigurieren (`.env`)
+
+Der Ablageort der Schulungsvideos ist ein Betreiber-Wert und wird in der `.env` gesetzt — analog zu [GeoIP](/guides/konfiguration/#geoip--länder-statistik-optional). Zwei Backends stehen zur Wahl: das lokale Dateisystem (Default) oder ein S3-kompatibler Objektspeicher (z. B. ein **selbstgehostetes MinIO**).
+
+```ini title=".env — lokales Dateisystem"
+# Speicher-Backend: filesystem (Default) oder s3
+LMS_STORAGE_BACKEND=filesystem
+
+# Ablageort der Videodateien (als Volume in den Container gemountet)
+LMS_MEDIA_DIR=/data/lms-media
+```
+
+```ini title=".env — S3-kompatibel (z. B. MinIO)"
+LMS_STORAGE_BACKEND=s3
+
+# S3-Zugang; die konkreten LMS_S3_*-Schlüssel (Endpoint, Bucket, Access-/Secret-Key,
+# Region) entsprechen dem Standard-S3-Schema — Namen und Reihenfolge aus der
+# .env.example des jeweiligen Releases übernehmen.
+LMS_S3_ENDPOINT=https://minio.example.internal
+LMS_S3_BUCKET=sentrymail-lms
+LMS_S3_ACCESS_KEY=…
+LMS_S3_SECRET_KEY=…
+```
+
+- Bei **`filesystem`** muss `LMS_MEDIA_DIR` als persistentes Volume gemountet sein, damit hochgeladene Videos ein Update des Stacks überstehen (siehe [Installation](/guides/installation/)).
+- Bei **`s3`** bleibt der Speicher trotzdem in eigener Hand, wenn ein selbstgehostetes MinIO oder ein interner Objektspeicher verwendet wird — die Selbsthosting-Zusage bleibt gewahrt.
+- Zugangsdaten liegen ausschließlich in der `.env`; sie werden nicht in der Datenbank abgelegt.
+
+## Kurse und Videos bereitstellen
+
+Im Dashboard verwaltet ein Admin die Schulungen im **Schulungs-Bereich** (Enterprise). Typischer Ablauf:
+
+1. **Kurs anlegen** — Titel, Beschreibung und Sprache festlegen.
+2. **Video hochladen** — die Datei landet im konfigurierten Speicher-Backend (Dateisystem oder S3); es wird kein externer Dienst eingebunden.
+3. **Verständnis-Quiz hinterlegen** — Fragen mit Antwortoptionen und Bestehensgrenze definieren.
+4. **Bestehensregeln setzen** — erforderlicher Wiedergabe-Anteil des Videos plus Quiz-Ergebnis.
+
+Erst wenn die geforderte Wiedergabezeit **tatsächlich gesehen** und das Quiz bestanden wurde, gilt der Kurs als abgeschlossen.
+
+## Automatische Zuweisung nach Risiko
+
+Das LMS knüpft an das **Human Risk Management** an ([Funktionen → Tracking & Ergebnisse](/reference/funktionen/#tracking--ergebnisse)):
+
+- Ein **Awareness-Schwellwert** legt fest, ab welchem Risiko-Score eine Person eingeschult wird.
+- Fällt der Score einer Person nach einer Kampagne unter diesen Wert (z. B. Klick oder Daten-Eingabe), wird der zugehörige Kurs **automatisch zugewiesen**.
+- Alternativ lassen sich Kurse **manuell** an einzelne Personen oder Gruppen vergeben.
+
+## Fristen, Erinnerungen, Eskalation
+
+- Je Zuweisung gilt eine **Frist** bis zum Abschluss.
+- Vor Fristablauf werden **Erinnerungen** versendet.
+- Nach Überschreiten greift eine **Overdue-Eskalation** (z. B. Hinweis an Verantwortliche); überfällige Schulungen sind im Reporting sichtbar.
+
+## Zertifikate & Nachweise
+
+- Nach bestandenem Kurs erzeugt das LMS einen **revisionssicheren Schulungs-Nachweis** als PDF mit **Integritäts-Hash** zur Fälschungssicherung.
+- Logo und Firmendaten aus **Einstellungen → PDF-Reports** werden als Kopf eingebettet (siehe [Konfiguration → PDF-Reports](/guides/konfiguration/#pdf-reports-logo-und-firmendaten-business)).
+- Zertifikate und Schulungsnachweise bleiben **auch nach Ablauf der Enterprise-Lizenz** abrufbar — Audit-Fähigkeit geht nicht verloren.
+- Fortschritt und Zertifikatsstatus erscheinen im **Enterprise-Reporting** und lassen sich per **CSV** exportieren; das **Nachweis-Center** liefert die passenden Compliance-Dokumente ([Funktionen](/reference/funktionen/#business-edition-add-on)).
+
+## Einordnung für NIS2 / BSI
+
+Dokumentierte, verpflichtende Schulungen mit Nachweis adressieren direkt die Anforderungen aus **NIS2 Art. 21** (Cyberhygiene und Schulungen) und dem BSI-Baustein **ORP.3 „Sensibilisierung und Schulung"**. Das LMS schließt damit den Kreis „Simulieren → Messen → Schulen → Nachweisen" — Details unter [NIS2 und BSI](/reference/nis2-und-bsi/).
+
+Siehe auch: [Funktionen](/reference/funktionen/) · [Konfiguration](/guides/konfiguration/) · [Roadmap](/reference/roadmap/)

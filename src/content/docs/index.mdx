@@ -15,11 +15,18 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, Badge } from '@astrojs/starlight/components';
 
 ## Was die Plattform kann
 
 <CardGrid>
+	<Card title="Awareness-Schulungen (LMS)" icon="open-book">
+		<p><Badge text="Neue Funktion" variant="tip" size="medium" /></p>
+		Selbstgehostete **Pflichtschulungen mit Videos**: automatische Zuweisung
+		bei niedrigem Awareness-Score, manipulationssicheres Fortschritts-Tracking,
+		Verständnis-Quiz und revisionssichere Zertifikate. Einrichtung unter
+		[Schulungsmodul (LMS)](/guides/schulungsmodul/).
+	</Card>
 	<Card title="Kampagnen und Tracking" icon="email">
 		Phishing-Kampagnen mit Zeitplanung, Vorlagen (HTML/Markdown, `.eml`-Import),
 		Landing Pages und Auswertung pro Empfänger – Öffnungen, Klicks und
@@ -45,6 +52,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 - [Installation](/guides/installation/) – Stack per Docker Compose starten
 - [Konfiguration](/guides/konfiguration/) – Login, SSO, LDAP, SMTP, 2FA
+- [Schulungsmodul (LMS)](/guides/schulungsmodul/) – selbstgehostete Video-Pflichtschulungen <Badge text="Neu" variant="tip" size="small" />
 - [Funktionen](/reference/funktionen/) – Vorlagen, Gruppen, Kampagnen, Tracking
 - [Architektur](/reference/architektur/) – technischer Aufbau
 - [Roadmap](/reference/roadmap/) – umgesetzter Stand und geplante Erweiterungen

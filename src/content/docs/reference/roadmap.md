@@ -13,12 +13,11 @@ Der dokumentierte Funktionsumfang ist umgesetzt: der **Open-Core-Kern** sowie di
 
 **Business-Add-on** — LDAP- und Entra-ID-Import, Passkeys (WebAuthn) als 2FA, Vorlagen-Bibliothek inkl. passender Landing Pages, anbieter-neutrale KI-Erstellung von Vorlagen/Landing Pages, `.eml`-Upload, PDF-Export (Management/Executive), QR-Phishing (Quishing), Webhooks, Passwortabfrage, Business-Reporting (Trend, Benutzerentwicklung, Abteilungsvergleich), wiederkehrende und mehrstufige Kampagnen, Nachweis-Center (DSGVO/NIS2/ISO 27001, Zertifikate, Schulungsnachweise).
 
-**Enterprise-Add-on** — White-Label, automatische/risikoabhängige Kampagnen, Enterprise-Reporting (Schulungsfortschritt, Zertifikatsstatus, individuelle Berichte/Zertifikate), SIEM-Export (Splunk HEC, Elasticsearch, Microsoft Sentinel, JSON), SAML SSO, KI-Risikoanalyse (AI-Scoring).
+**Enterprise-Add-on** — White-Label, automatische/risikoabhängige Kampagnen, Enterprise-Reporting (Schulungsfortschritt, Zertifikatsstatus, individuelle Berichte/Zertifikate), SIEM-Export (Splunk HEC, Elasticsearch, Microsoft Sentinel, JSON), SAML SSO, KI-Risikoanalyse (AI-Scoring), **Schulungsmodul (LMS)** — selbstgehostete Video-Pflichtschulungen mit automatischer Zuweisung nach Awareness-Schwellwert, Verständnis-Quiz, Fristen und revisionssicheren Zertifikaten (siehe [Schulungsmodul](/guides/schulungsmodul/)).
 
 ## Angedacht / später
 
 - Weitere Integrationen (z. B. Ticketing, Chat) über die bestehenden Webhooks hinaus.
-- Vertiefte Trainings-/Lernzuweisung als Folgemaßnahme.
 
 ---
 
