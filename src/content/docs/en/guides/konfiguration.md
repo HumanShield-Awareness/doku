@@ -48,6 +48,10 @@ For the country breakdown in the dashboard, the operator stores in the `.env` th
 GEOIP_DB_PATH=/path/to/GeoLite2-Country.mmdb
 ```
 
+## Training module / LMS video storage (Enterprise)
+
+Where training videos are stored is an operator value in the `.env`: `LMS_STORAGE_BACKEND` (`filesystem` or `s3`), `LMS_MEDIA_DIR` (for the filesystem) or the `LMS_S3_*` keys (for S3-compatible storage such as self-hosted MinIO). Setup, courses, assignment and certificates are covered in a dedicated guide: [Training module (LMS)](/en/guides/schulungsmodul/).
+
 ## Activity / audit log
 
 Under **Settings → Activity → Audit Events**: sign-in events (success/failure/blocked) and system changes (users, settings, 2FA) — with timestamp and IP.

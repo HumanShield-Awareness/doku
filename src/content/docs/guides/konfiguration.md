@@ -48,6 +48,10 @@ Für die Länder-Auswertung im Dashboard hinterlegt der Betreiber in der `.env` 
 GEOIP_DB_PATH=/pfad/zu/GeoLite2-Country.mmdb
 ```
 
+## Schulungsmodul / LMS-Videospeicher (Enterprise)
+
+Der Ablageort der Schulungsvideos ist ein Betreiber-Wert in der `.env`: `LMS_STORAGE_BACKEND` (`filesystem` oder `s3`), `LMS_MEDIA_DIR` (bei Dateisystem) bzw. die `LMS_S3_*`-Schlüssel (bei S3-kompatiblem Speicher wie selbstgehostetem MinIO). Einrichtung, Kurse, Zuweisung und Zertifikate sind in der eigenen Anleitung beschrieben: [Schulungsmodul (LMS)](/guides/schulungsmodul/).
+
 ## Aktivität / Audit-Log
 
 Unter **Einstellungen → Aktivität → Audit Events**: Anmelde-Ereignisse (Erfolg/Fehlschlag/blockiert) und System­änderungen (Benutzer, Einstellungen, 2FA) — mit Zeitstempel und IP.
